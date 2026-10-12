@@ -1,10 +1,10 @@
 'use strict';
 // Change this version when shipping a new app shell. Waiting updates activate
 // after existing app windows close, avoiding a forced reload during an inquiry.
-const CACHE = 'clue-me-in-shell-v8-fresh-cases';
+const CACHE = 'clue-me-in-shell-v11-case-rooms-embedded';
 const ROOT = new URL('./', self.location.href);
 const INDEX = new URL('index.html', ROOT).href;
-const FILES = ['index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'reference-data.js', 'system-prompts.js', 'case-variety.js'].map(file => new URL(file, ROOT).href);
+const FILES = ['index.html', 'manifest.webmanifest', 'icon-192.png', 'icon-512.png', 'reference-data.js', 'system-prompts.js', 'case-variety.js', 'case-rooms.js', 'case-rooms.css', 'assets/rooms/interrogation-desktop.jpg', 'assets/rooms/interrogation-mobile.jpg', 'assets/rooms/advisor-desktop.jpg', 'assets/rooms/advisor-mobile.jpg', 'assets/rooms/investigator-desktop.jpg', 'assets/rooms/investigator-mobile.jpg', 'assets/rooms/dossier-closed.png', 'assets/rooms/dossier-open.png'].map(file => new URL(file, ROOT).href);
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(CACHE).then(cache => cache.addAll(FILES)));
 });

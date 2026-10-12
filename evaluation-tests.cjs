@@ -1,4 +1,4 @@
-const fs=require('fs'),vm=require('vm'),assert=require('assert');const s=fs.readFileSync(__dirname+'/../index.html','utf8');
+const fs=require('fs'),vm=require('vm'),assert=require('assert');const s=fs.readFileSync(__dirname+'/index.html','utf8');
 const ctx={ClueMeInI18n:{getLanguage:()=> 'en'},hintPenalty:c=>Math.min(100,(c.hintHistory||[]).reduce((n,h)=>n+h.cost,0)),escapeHtml:s=>String(s).replaceAll('<','&lt;')};vm.createContext(ctx);vm.runInContext(s.slice(s.indexOf('    const SCORE_CRITERIA'),s.indexOf('    const HINT_LEVELS')),ctx);
 const data={verdictText:'verdict',scores:{evidence:{points:20,reason:'e'},conclusion:{points:40,reason:'c'},questions:{points:20,reason:'q'},procedure:{points:20,reason:'p'}},strengths:['<b>test</b>'],mistakes:[],improvements:[]};
 const c={evidenceList:[{id:'1'},{id:'1'},{id:'red'}],hintHistory:[{cost:2},{cost:5},{cost:10}]},secret={culpritName:'Culprit',investigationPlan:{clues:[{id:'1'},{id:'2'}]}};

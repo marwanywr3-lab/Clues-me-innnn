@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');
 const ctx={};vm.createContext(ctx);
-for(const f of ['reference-data.js','system-prompts.js'])vm.runInContext(fs.readFileSync(__dirname+'/../'+f,'utf8'),ctx);
+for(const f of ['reference-data.js','system-prompts.js'])vm.runInContext(fs.readFileSync(__dirname+'/'+f,'utf8'),ctx);
 ctx.ClueMeInGameRules={legalRules:()=> 'Only the selected legal system applies.'};
 const P=ctx.ClueMeInPolicy,R=ctx.ClueMeInReferences;
 assert.equal(R.names.length,100);assert.equal(R.caseTypes,undefined);assert.equal(new Set(R.names.map(n=>n.id)).size,100);

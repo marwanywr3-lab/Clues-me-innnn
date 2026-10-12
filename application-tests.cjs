@@ -3,10 +3,10 @@ const memory=new Map();let blocked=false;
 const localStorage={getItem:k=>memory.get(k)||null,setItem:(k,v)=>memory.set(k,String(v)),removeItem:k=>memory.delete(k),key:i=>[...memory.keys()][i],get length(){return memory.size;}};
 const document={readyState:'loading',addEventListener:()=>{},querySelectorAll:()=>[],getElementById:()=>null,documentElement:{lang:'ar',dir:'rtl',dataset:{},setAttribute:()=>{}},body:{}};
 const ctx={document,localStorage,navigator:{userAgent:'',maxTouchPoints:0},location:{protocol:'file:',hostname:''},setTimeout,clearTimeout,console,URL,AbortController,TextEncoder,atob:s=>Buffer.from(s,'base64').toString(),btoa:s=>Buffer.from(s).toString('base64'),addEventListener:()=>{},matchMedia:()=>({matches:false,addEventListener:()=>{}})};ctx.window=ctx;vm.createContext(ctx);
-const html=fs.readFileSync(__dirname+'/../index.html','utf8');
+const html=fs.readFileSync(__dirname+'/index.html','utf8');
 for(const m of html.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script>/g)){
- if(m[1].includes('src=')){const name=m[1].match(/src="([^"]+)"/)[1];vm.runInContext(fs.readFileSync(__dirname+'/../'+name,'utf8'),ctx);}
- else if(m[2].includes('Shared Arabic')||m[2].includes('Local drafts')||m[2].includes('Shared case budgets')||m[2].includes('Safe Storage'))vm.runInContext(m[2],ctx);
+ if(m[1].includes('src=')){const name=m[1].match(/src="([^"]+)"/)[1];vm.runInContext(fs.readFileSync(__dirname+'/'+name,'utf8'),ctx);}
+ else if(m[2].includes('Shared Arabic')||m[2].includes('Local drafts')||m[2].includes('Shared case budgets')||m[2].includes('Safe Storage')||m[2].includes('Approved name pool')||m[2].includes('Shared player-assistant policy')||m[2].includes('Fresh generation plans')||m[2].includes('Per-case scene navigation'))vm.runInContext(m[2],ctx);
 }
 (async()=>{
 await vm.runInContext(`(async()=>{

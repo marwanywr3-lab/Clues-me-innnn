@@ -1,6 +1,6 @@
 const fs=require('fs'),vm=require('vm'),assert=require('assert');const ctx={};vm.createContext(ctx);
-for(const f of ['reference-data.js','system-prompts.js'])vm.runInContext(fs.readFileSync(__dirname+'/../'+f,'utf8'),ctx);
-const html=fs.readFileSync(__dirname+'/../index.html','utf8');
+for(const f of ['reference-data.js','system-prompts.js'])vm.runInContext(fs.readFileSync(__dirname+'/'+f,'utf8'),ctx);
+const html=fs.readFileSync(__dirname+'/index.html','utf8');
 const rules=[...html.matchAll(/<script\b[^>]*>([\s\S]*?)<\/script>/g)].find(m=>m[1].includes('Shared case budgets'))[1];vm.runInContext(rules,ctx);
 let count=0;
 for(const law of ['السعودي','الأمريكي'])for(const depth of ['قصير','متوسط','طويل']){

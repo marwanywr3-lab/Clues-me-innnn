@@ -1,21 +1,19 @@
-Clues me in — installation
+Clues me in — نسخة تم التحقق منها (v3)
 
-Upload these five files together to the same published folder:
-index.html
-manifest.webmanifest
-service-worker.js
-icon-192.png
-icon-512.png
+ملف index.html في هذه النسخة مكتمل ذاتياً: يحتوي واجهة التطبيق وأكواد غرف القضايا
+وجميع صور الغرف وملف القضية. لذلك لن تظهر خلفية فارغة حتى إذا رفعت index.html وحده.
 
-Replace the existing index.html. Keep your existing CNAME if you use a custom domain.
-Do not change the website domain/path if you want existing local cases to remain available.
-Serve over HTTPS (GitHub Pages supports this). Open the published site once online.
-Android/Chrome/Edge: use Install Clues me in in the sidebar or the browser installation menu.
-iPhone/iPad: open in Safari, Share, Add to Home Screen.
+طريقة النشر المفضلة على GitHub Pages:
+1. فك ضغط ZIP وافتح المجلد Clues-me-in-main.
+2. ارفع محتويات المجلد إلى جذر المستودع (وليس المجلد نفسه).
+3. استبدل index.html وservice-worker.js وأبقِ مجلد assets/rooms والملفات الأخرى.
+4. احتفظ بملف CNAME الحالي إذا كنت تستخدم نطاقاً مخصصاً.
+5. بعد النشر أغلق جميع تبويبات الموقع وافتحه مجدداً؛ قد يستمر إصدار قديم
+   مؤقتاً بسبب service worker. حدّث الصفحة إذا لزم.
 
-After the first successful cache installation, the interface and locally saved cases can
-be opened offline. Gemini generation and chats require an internet connection.
-For subsequent releases, increment CACHE in service-worker.js, upload the files, then
-close existing app windows and reopen so a waiting worker can activate safely.
+إن لم تتمكن من رفع كل الملفات: رفع index.html الجديد وحده يكفي لظهور
+الواجهة وصور القضايا، لكن تحديث service-worker.js وباقي ملفات PWA مستحسن
+لدعم التثبيت والعمل دون اتصال.
 
-icon.svg is the editable icon source and does not need to be uploaded.
+لا تغيّر عنوان الموقع أو مساره إن أردت الحفاظ على القضايا المحفوظة في
+المتصفح نفسه. توليد القضايا والمحادثات يتطلبان اتصالاً ومفتاح Gemini صالحاً.
